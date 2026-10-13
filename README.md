@@ -1,8 +1,10 @@
 # Rough Notation React (Wrapper)
 
-![npm](https://img.shields.io/npm/v/react-rough-notation?style=for-the-badge)
+![npm](https://img.shields.io/npm/v/@jaivalsaija/react-rough-notation?style=for-the-badge)
 
 This is a React wrapper for [RoughNotation](https://roughnotation.com/), a small JavaScript library to create and animate annotations on a web page.
+
+> This is a maintained fork of [react-rough-notation](https://github.com/linkstrifer/react-rough-notation) by [Link Strifer](https://github.com/linkstrifer), published as `@jaivalsaija/react-rough-notation`. Improvements made here are also sent upstream as pull requests. See [Credits](#credits).
 
 - [Visit website to see it in action](https://roughnotation.com/)
 - [Library docs](https://github.com/pshihn/rough-notation)
@@ -27,6 +29,7 @@ This is a React wrapper for [RoughNotation](https://roughnotation.com/), a small
     - [Custom order](#custom-order)
   - [Playground](#playground)
   - [TODO](#todo)
+  - [Credits](#credits)
 
 <!-- /TOC -->
 
@@ -35,13 +38,13 @@ This is a React wrapper for [RoughNotation](https://roughnotation.com/), a small
 You can add rough-notation to your project via npm.
 
 ```
-npm install --save react-rough-notation
+npm install --save @jaivalsaija/react-rough-notation
 ```
 
 Then just import the components you need.
 
 ```js
-import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
+import { RoughNotation, RoughNotationGroup } from "@jaivalsaija/react-rough-notation";
 ```
 
 ## RoughNotation Component
@@ -150,5 +153,11 @@ You can find a [CodeSandbox demo here](https://codesandbox.io/s/github/linkstrif
 
 ## TODO
 
-- [ ] Auto compile and publish to npm
+- [x] Auto compile and publish to npm
 - [ ] Testing
+
+## Credits
+
+- [Link Strifer](https://github.com/linkstrifer): original author of [react-rough-notation](https://github.com/linkstrifer/react-rough-notation).
+- [Preet Shihn](https://github.com/pshihn): author of [rough-notation](https://github.com/pshihn/rough-notation), the library this wraps.
+- [Jaival Saija](https://github.com/Jaival): maintainer of this fork.
