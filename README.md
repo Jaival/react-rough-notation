@@ -153,7 +153,7 @@ You can find a [CodeSandbox demo here](https://codesandbox.io/s/github/linkstrif
 
 ## TODO
 
-- [x] Auto compile and publish to npm
+- [x] Auto compile and publish to npm (see [PUBLISHING.md](PUBLISHING.md))
 - [ ] Testing
 
 ## Credits
