@@ -3,7 +3,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import commonJS from '@rollup/plugin-commonjs'
 import typescript from 'rollup-plugin-typescript2'
 
-import pkg from './package.json'
+import pkg from './package.json' with { type: 'json' }
 
 export default {
   external: ['rough-notation'],
