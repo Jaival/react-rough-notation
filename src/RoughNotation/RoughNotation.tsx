@@ -27,7 +27,7 @@ const RoughNotation: React.FunctionComponent<RoughNotationProps> = ({
   ...rest
 }) => {
   const element = useRef<HTMLElement>(null)
-  const annotation = useRef<Annotation>()
+  const annotation = useRef<Annotation>(undefined)
   const innerVars = useRef<{
     playing: boolean
     timeout: null | number
@@ -40,7 +40,31 @@ const RoughNotation: React.FunctionComponent<RoughNotationProps> = ({
   // The group registers this annotation's callbacks once, at mount, so they
   // read the timing props through a ref to always see the latest values.
   const timing = useRef({ animate, animationDelay, animationDuration })
-  timing.current = { animate, animationDelay, animationDuration }
+
+  // The latest props, read when an annotation is created so a re-created
+  // annotation keeps the current color, padding and so on.
+  const options = {
+    animate,
+    animationDuration,
+    brackets,
+    color,
+    getAnnotationObject,
+    iterations,
+    multiline,
+    padding,
+    rtl,
+    strokeWidth,
+    type,
+  }
+  const latest = useRef(options)
+
+  // Refs can't be written during render, so sync them in the first effect.
+  // Effects run in order, and a group's effects run after its children's, so
+  // every later read sees this render's props.
+  useEffect(() => {
+    timing.current = { animate, animationDelay, animationDuration }
+    latest.current = options
+  })
 
   const clearTimeouts = useCallback(() => {
     const { timeout, playingTimeout } = innerVars.current
@@ -97,24 +121,6 @@ const RoughNotation: React.FunctionComponent<RoughNotationProps> = ({
     },
     typeof order === 'string' ? parseInt(order) : order
   )
-
-  // The latest props, read when an annotation is created so a re-created
-  // annotation keeps the current color, padding and so on.
-  const options = {
-    animate,
-    animationDuration,
-    brackets,
-    color,
-    getAnnotationObject,
-    iterations,
-    multiline,
-    padding,
-    rtl,
-    strokeWidth,
-    type,
-  }
-  const latest = useRef(options)
-  latest.current = options
 
   // rough-notation can't change these options on an existing annotation, so a
   // change removes it and annotates again. Arrays are keyed by value so an
